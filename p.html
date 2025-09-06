@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata - Muhamad Ihsan Al'zidane</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('https://images.unsplash.com/photo-1542281286-9a11596e2de6?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .glass-container {
+            backdrop-filter: blur(10px) brightness(1.1);
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 650px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            color: #333; /* Warna font utama di dalam kontainer */
+        }
+        .glass-container:hover {
+            transform: scale(1.02);
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        .header-glass h1 {
+            font-size: 2.2em;
+            margin-top: 20px;
+            color: #fff; /* Judul tetap putih agar kontras dengan latar belakang gelap */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .info-glass {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .info-glass h2 {
+            border-bottom: 1px solid rgba(51, 51, 51, 0.5); /* Warna border disesuaikan */
+            padding-bottom: 10px;
+            font-size: 1.3em;
+            color: #333; /* Judul sub-bagian berwarna gelap */
+        }
+        .info-glass table {
+            width: 100%;
+        }
+        .info-glass th, .info-glass td {
+            padding: 8px 0;
+            vertical-align: top;
+        }
+        .info-glass th {
+            width: 130px;
+            font-weight: bold;
+        }
+        .info-glass ul {
+            list-style: none;
+            padding: 0;
+        }
+        .info-glass li {
+            background: rgba(255, 255, 255, 0.15);
+            margin-bottom: 8px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        a {
+            color: #0066cc; /* Link berwarna biru */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-container">
+        <img src="https://raw.githubusercontent.com/Shiraori19/Web-Sederhana/refs/heads/main/_MG_9628.JPG" alt="Foto Profil" class="profile-pic" >
+        <div class="header-glass">
+             <h1>BIODATA DIRI</h1>
+        </div>
+        
+        <div class="info-glass">
+            <h2>Informasi Pribadi</h2>
+            <table>
+                <tr><th>Nama</th><td>: Muhamad Ihsan Al'zidane</td></tr>
+                <tr><th>Tempat, Tgl. Lahir</th><td>: Kuningan, 19 April 2006</td></tr>
+                <tr><th>Agama</th><td>: Islam</td></tr>
+                <tr><th>Alamat</th><td>: Jl. Abdullah RT.10 RW.03 Kec. Cilimus Kab. Kuningan</td></tr>
+                <tr><th>Email</th><td>: <a href="mailto:alziezau@gmail.com">alziezau@gmail.com</a></td></tr>
+                <tr><th>No. HP</th><td>: +62838-2301-7021</td></tr>
+                <tr><th>Website</th><td>: <a href="https://drive.google.com/drive/folders/10kAPenKUmNJi9NVoY-rt7IJFzGNST6Y6?usp=drive_link" target="_blank">Zidane</a></td></tr>
+            </table>
+        </div>
+
+        <div class="info-glass">
+            <h2>Pendidikan</h2>
+            <ul>
+                <li><b>2011 - 2017</b> SDN 1 Bojong</li>
+                <li><b>2017 - 2021</b> SMPN 1 Cilimus</li>
+                <li><b>2021 - 2024</b> SMAN 1 Cilimus</li>
+            </ul>
+        </div>
+        
+        <div class="info-glass">
+            <h2>Keahlian</h2>
+            <ul>
+                <li>Microsoft Word</li>
+                <li>CSS</li>
+                <li>Python</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
