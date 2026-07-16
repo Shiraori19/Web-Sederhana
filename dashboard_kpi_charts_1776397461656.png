@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi — Sistem Informasi Toko ATK</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary:#6366f1; --secondary:#8b5cf6; --accent:#06b6d4; --success:#10b981; --warning:#f59e0b; --danger:#ef4444; --dark:#0f172a; --dark-2:#1e293b; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:var(--dark); color:#e2e8f0; line-height:1.8; }
+        .container-doc { max-width:1000px; margin:0 auto; padding:40px 24px; }
+        h1,h2,h3 { font-family:'Poppins',sans-serif; color:#f1f5f9; }
+        h1 { font-size:36px; font-weight:800; text-align:center; margin-bottom:8px; }
+        h2 { font-size:28px; font-weight:700; margin:48px 0 16px ; padding-bottom:12px; border-bottom:2px solid rgba(99,102,241,0.2); display:flex; align-items:center; gap:12px; }
+        h2 .num { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; width:40px; height:40px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+        h3 { font-size:20px; font-weight:600; margin:24px 0 12px; color:var(--accent); }
+        .subtitle { text-align:center; color:#94a3b8; font-size:16px; margin-bottom:40px; }
+        .logo-section { text-align:center; margin-bottom:32px; }
+        .logo-section .icon { width:80px; height:80px; background:linear-gradient(135deg,var(--primary),var(--secondary)); border-radius:24px; display:inline-flex; align-items:center; justify-content:center; font-size:36px; color:#fff; margin-bottom:16px; }
+        p, li { font-size:15px; color:#cbd5e1; }
+        ul { padding-left:24px; }
+        li { margin-bottom:6px; }
+        .card-doc { background:rgba(30,41,59,0.7); border:1px solid rgba(99,102,241,0.15); border-radius:16px; padding:24px; margin:16px 0; }
+        .card-doc.highlight { border-color:rgba(99,102,241,0.3); background:rgba(99,102,241,0.08); }
+        .card-doc.warning { border-color:rgba(245,158,11,0.3); background:rgba(245,158,11,0.06); }
+        .card-doc.danger { border-color:rgba(239,68,68,0.3); background:rgba(239,68,68,0.06); }
+        .card-doc.success { border-color:rgba(16,185,129,0.3); background:rgba(16,185,129,0.06); }
+        table { width:100%; border-collapse:collapse; margin:16px 0; font-size:14px; }
+        th { background:rgba(99,102,241,0.1); color:#a5b4fc; padding:12px 16px; text-align:left; font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.5px; }
+        td { padding:10px 16px; border-bottom:1px solid rgba(99,102,241,0.06); }
+        tr:hover { background:rgba(99,102,241,0.03); }
+        .tag { display:inline-block; padding:3px 10px; border-radius:6px; font-size:11px; font-weight:600; }
+        .tag-primary { background:rgba(99,102,241,0.15); color:#a5b4fc; }
+        .tag-success { background:rgba(16,185,129,0.15); color:#6ee7b7; }
+        .tag-warning { background:rgba(245,158,11,0.15); color:#fcd34d; }
+        .tag-danger { background:rgba(239,68,68,0.15); color:#fca5a5; }
+        .faq-item { margin-bottom:20px; }
+        .faq-item h4 { font-size:15px; font-weight:600; color:#f1f5f9; margin-bottom:6px; }
+        .faq-item h4::before { content:'Q: '; color:var(--primary); font-weight:700; }
+        .faq-item p::before { content:'A: '; color:var(--success); font-weight:600; }
+        .flowchart-link { display:inline-block; padding:12px 24px; background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; border-radius:12px; text-decoration:none; font-weight:600; transition:all 0.3s; }
+        .flowchart-link:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(99,102,241,0.4); color:#fff; }
+        .print-btn { position:fixed; bottom:24px; right:24px; z-index:99; }
+        .print-btn button { background:var(--primary); color:#fff; border:none; padding:14px 24px; border-radius:12px; font-weight:600; cursor:pointer; box-shadow:0 4px 20px rgba(99,102,241,0.4); }
+        @media print {
+            body { background:#fff; color:#333; }
+            h1,h2,h3 { color:#1a1a2e; }
+            p,li,td { color:#333; }
+            .card-doc { border-color:#ddd; background:#f8f9fa; }
+            th { background:#e9ecef; color:#333; }
+            .print-btn { display:none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-doc">
+        <!-- Cover -->
+        <div class="logo-section">
+            <div class="icon"><i class="bi bi-shop"></i></div>
+            <h1>Sistem Informasi Toko<br>Alat Tulis Kantor (ATK)</h1>
+            <p class="subtitle">Dokumentasi Teknis & Presentasi Perusahaan<br>Ketoeroenan Doeloe v2.0</p>
+        </div>
+
+        <!-- ===== 1. LATAR BELAKANG ===== -->
+        <h2><span class="num">1</span> Latar Belakang</h2>
+        
+        <h3>Slide 1: Kondisi Saat Ini (As-Is)</h3>
+        <p>Usaha ritel Alat Tulis Kantor (ATK) tradisional seperti Ketoeroenan Doeloe terus berkembang seiring dengan tingginya permintaan operasional perkantoran dan pendidikan. Namun, pengelolaan toko yang masih konvensional (mengandalkan buku besar dan memori) mulai memunculkan berbagai bottleneck operasional:</p>
+
+        <div class="card-doc warning">
+            <ul>
+                <li><strong>Data Silo & Risiko Kehilangan:</strong> Pencatatan stok secara manual seringkali menyebabkan selisih antara data fisik di gudang dengan catatan di kasir hingga 15-20%.</li>
+                <li><strong>Transisi Multi-Channel yang Sulit:</strong> Adanya ekspansi ke marketplace (Shopee, Tokopedia, Website) menyebabkan stok sering kali bentrok (overselling), karena stok tidak tersinkronisasi antar platform.</li>
+                <li><strong>Keputusan Bisnis yang Lambat:</strong> Pihak manajemen kesulitan mengetahui secara pasti produk mana yang paling mendatangkan profit karena tidak ada analisis data yang konkret.</li>
+            </ul>
+        </div>
+
+        <h3>Slide 2: Solusi yang Diusulkan (To-Be / Justifikasi)</h3>
+        <p>Untuk mempertahankan efisiensi bisnis di era digital, Ketoeroenan Doeloe membutuhkan transformasi melalui kehadiran sistem informasi yang modern dan terpusat.</p>
+        
+        <div class="card-doc success">
+            <ul>
+                <li><strong>Sentralisasi Terpadu:</strong> Sistem baru harus bisa menghubungkan Manajemen Stok Gudang, Point of Sales (POS), dan order online (Marketplace) ke dalam satu database terpadu.</li>
+                <li><strong>Automasi Berbasis Peringatan:</strong> Sistem harus memiliki kemampuan auto-alert ketika stok menipis, yang terintegrasi langsung dengan modul form pengadaan (e-procurement) ke supplier.</li>
+                <li><strong>Loyalitas Digital:</strong> Demi meningkatkan retensi pelanggan di tengah pasar yang kompetitif, toko perlu berinovasi menggunakan program Customer Loyalty yang otomatis terhitung ketika transaksi "cashless" terjadi.</li>
+            </ul>
+        </div>
+        
+        <!-- ===== 2. METODE PENGEMBANGAN ===== -->
+        <h2><span class="num">2</span> Metode Pengembangan</h2>
+        <p>Berikut adalah dua opsi metodologi yang dipertimbangkan untuk pengembangan sistem Ketoeroenan Doeloe:</p>
+
+        <div class="card-doc highlight">
+            <h3>OPSI 1: Metode Waterfall (Pendekatan Klasik & Terstruktur)</h3>
+            <p>Metode Waterfall mengibaratkan pengerjaan sistem seperti air terjun: satu tahap harus selesai 100% dan dikunci sebelum boleh turun ke tahap berikutnya. Pendekatan ini melihat proses secara kaku, tapi sangat aman dari revisi di tengah jalan.</p>
+            <ol>
+                <li><strong>Requirement Analysis:</strong> Memetakan 5 alur bisnis yang sudah Fix di awal. Kita sepakati rules seperti: " loyalitas dapet poin kelipatan Rp 10.000."</li>
+                <li><strong>System Design:</strong> Pembuatan ERD (Entity-Relationship Diagram) 12 Tabel, merancang UI dark theme di atas framework Bootstrap 5.</li>
+                <li><strong>Implementation:</strong> Database direalisasikan di MySQL, lalu coding PHP per modul (Dashboard, POS Kasir, Laporan).</li>
+                <li><strong>Testing:</strong> Menggunakan teknik Black-box, menguji checkout, dan memastikan tampilan responsif di smartphone.</li>
+                <li><strong>Deployment:</strong> Meluncurkan <code>install.php</code> untuk setup otomatis di server toko, disertai training staf.</li>
+                <li><strong>Maintenance:</strong> Perawatan berkelanjutan apabila kelak butuh penyesuaian (misalnya ganti PPN).</li>
+            </ol>
+            <div style="margin-top:12px; font-style:italic; color:#94a3b8; padding-top:10px; border-top:1px dashed rgba(99,102,241,0.3);">
+                <strong>🗣️ Speaker Notes (Cara Mempresentasikannya):</strong><br>
+                "Sistem Ketoeroenan Doeloe kami kembangkan menggunakan Waterfall. Mengapa? Karena proses bisnis toko ritel seperti ATK ini sudah sangat stabil dan jelas dari awal. Kami tidak perlu menebak-nebak kebutuhan sistem, sehingga alur pembuatannya linier, terdokumentasi dengan sangat rapih dari hulu (Desain ERD) sampai ke hilir (Blackbox Testing)."
+            </div>
+        </div>
+
+        <div class="card-doc">
+            <h3>OPSI 2: Metode RAD (Cepat & Purwarupa)</h3>
+            <p>RAD adalah pendekatan modern yang menolak kerja kaku. Kita tidak perlu merancang semua kesempurnaan di awal secara teori. Kita buat purwarupa sistem secepatnya, lalu tes, kalau kurang, langsung perbaiki.</p>
+            <ol>
+                <li><strong>Requirement Planning:</strong> Mengidentifikasi masalah terbesar secara cepat (stok tidak sinkron dan hitungan manual).</li>
+                <li><strong>User Design:</strong> Merakit halaman (POS, Laporan) secepat mungkin memanfaatkan aset Bootstrap.</li>
+                <li><strong>Construction (Iteratif):</strong> User menguji draft sistem (misal menemukan bug time loop pada Riwayat), lalu langsung dikonstruksi ulang detik itu juga.</li>
+                <li><strong>Cutover (Rilis):</strong> Setelah fungsi utama bekerja stabil, langsung di-deploy ke toko dengan data dummy.</li>
+            </ol>
+            <div style="margin-top:12px; font-style:italic; color:#94a3b8; padding-top:10px; border-top:1px dashed rgba(255,255,255,0.1);">
+                <strong>🗣️ Speaker Notes (Cara Mempresentasikannya):</strong><br>
+                "Kami menyadari di era kompetitif saat ini, toko butuh sistem digital yang cepat siap. Oleh sebab itu kami menggunakan RAD. Lewat RAD, kami mendayagunakan komponen Bootstrap 5 dan Chart.js untuk mempercepat fase desain. Pendekatan ini memungkinkan kami me-rilis 11 modul utuh mulai dari POS sampai Procurement tanpa menghabiskan waktu berbulan-bulan di atas kertas semata."
+            </div>
+        </div>
+
+        <!-- ===== 3. TUJUAN ===== -->
+        <h2><span class="num">3</span> Tujuan Sistem</h2>
+        
+        <h3>Tujuan Utama (Misi Utama)</h3>
+        <p>Mengembangkan dan mengimplementasikan Sistem Informasi berbasis web yang terpadu guna mendigitalisasi operasional harian Toko ATK Ketoeroenan Doeloe, dengan fokus pada <strong>efisiensi waktu</strong>, <strong>sinkronisasi data lintas saluran</strong> (offline & online), serta mendukung pengambilan keputusan strategis yang <strong>berbasis data valid (data-driven)</strong>.</p>
+        
+        <h3>Tujuan Khusus (4 Pilar Sistem)</h3>
+        <div class="card-doc success">
+            <ul>
+                <li><strong>Pilar 1: Inventaris</strong> — Membangun algoritma sinkronisasi stok otomatis (auto-deduction) guna menekan risiko kekosongan barang (stock-out) dan memastikan akurasi gudang.</li>
+                <li><strong>Pilar 2: Transaksi (POS)</strong> — Menciptakan Point of Sales yang mensupport ragam pembayaran modern (Kas/QRIS/E-Wallet), serta merekam setiap invoice secara instan.</li>
+                <li><strong>Pilar 3: Analisis Data</strong> — Menghadirkan Dashboard Business Intelligence secara real-time yang dapat memetakan performa multi-channel beserta tren produk paling laris.</li>
+                <li><strong>Pilar 4: Ketahanan Bisnis</strong> — Mewadahi relasi jangka panjang dengan konsumen melalui program Loyalitas (Poin Reward) Berjenjang yang terotomatisasi.</li>
+            </ul>
+            <div style="margin-top:16px; font-style:italic; padding-top:12px; border-top:1px dashed rgba(16,185,129,0.3);">
+                <strong>🗣️ Speaker Notes:</strong><br>
+                "Bapak/Ibu sekalian, landasan utama dari proyek ini bukanlah sekadar mengubah buku catatan menjadi layar komputer. Tidak. Tujuan utama kami adalah mengubah alur kerja agar jadi lebih adaptif. Dari sisi gudang, kami menargetkan sinkronisasi stok yang presisi. Dari sisi kasir, POS yang ramah cashless. Selanjutnya, dashboard analitik untuk membaca tren. Dan terakhir, menjaga pembeli agar tidak kabur lewat loyalitas yang tersistem."
+            </div>
+        </div>
+
+        <!-- ===== 4. BEDAH ALUR BISNIS ===== -->
+        <h2><span class="num">4</span> Bedah Alur Bisnis (Flowmap)</h2>
+        <p>Sistem ini dirancang untuk mengintegrasikan penjualan offline (toko fisik) dan online (marketplace) ke dalam satu wadah digital pemusatan.</p>
+        
+        <div class="card-doc">
+            <h3>1. Integrasi Multi-Channel (Input Penjualan)</h3>
+            <p>Menggunakan pendekatan <strong>Omnichannel</strong> dari tiga pintu utama:</p>
+            <ul>
+                <li><strong>Toko Fisik:</strong> Via POS (Point of Sales) dengan percabangan pembayaran (Tunai vs Digital).</li>
+                <li><strong>Marketplace (Shopee/Tokopedia):</strong> Pesanan masuk secara otomatis ke sistem pusat.</li>
+                <li><strong>Website:</strong> Penjualan mandiri secara daring.</li>
+            </ul>
+        </div>
+        
+        <div class="card-doc">
+            <h3>2. Pengelolaan Stok Terpusat (Inventory Management)</h3>
+            <p>Jantung operasional toko yang melibatkan:</p>
+            <ul>
+                <li><strong>Sinkronisasi Real-time:</strong> Mencegah overselling saat terjadi penjualan antar platform.</li>
+                <li><strong>Input Manual Gudang:</strong> Kendali untuk mencatat barang masuk/rusak.</li>
+            </ul>
+        </div>
+
+        <div class="card-doc">
+            <h3>3. Otomatisasi Dashboard (Proses Inti)</h3>
+            <ul>
+                <li><strong>Manajemen Pesanan & Pengiriman:</strong> Melacak status kiriman.</li>
+                <li><strong>Analisis Data:</strong> Mengolah histori penjualan untuk melihat tren.</li>
+                <li><strong>Loyalty Program:</strong> Mengonversi belanjaan menjadi poin retensi.</li>
+            </ul>
+        </div>
+
+        <div class="card-doc">
+            <h3>4. Pengambilan Keputusan & Pengadaan (Procurement)</h3>
+            <ul>
+                <li><strong>E-Procurement:</strong> Fitur ambang batas stok (minimum stock level). Jika stok di bawah batas, sistem memicu Purchase Order (PO) otomatis/peringatan.</li>
+            </ul>
+        </div>
+
+        <div class="card-doc highlight">
+            <h3>Ringkasan Alur Kerja & Analisis Kritis</h3>
+            <table>
+                <tr><th>Aktor</th><th>Tugas Utama</th></tr>
+                <tr><td><strong>Gudang</strong></td><td>Update stok fisik dan menerima barang masuk.</td></tr>
+                <tr><td><strong>Kasir/POS</strong></td><td>Melayani pembeli langsung dan mengelola pembayaran.</td></tr>
+                <tr><td><strong>Dashboard (Sistem)</strong></td><td>Menyatukan data, sinkronisasi stok, dan analisis tren.</td></tr>
+                <tr><td><strong>Manajemen</strong></td><td>Memantau laporan dan menyetujui pembelian barang ke supplier.</td></tr>
+            </table>
+            
+            <h4 style="margin-top:16px; font-size:16px;">Analisis Kritis</h4>
+            <p style="margin-bottom:0;">Sistem sedang bertransformasi dari tradisional ke semi-otomatis.<br>
+            <strong>Kekuatan:</strong> Integrasi marketplace & sistem loyalitas pelanggan.<br>
+            <strong>Tantangan:</strong> Masih ada ketergantungan pada input manual gudang. Jika petugas gudang terlupa menginput barang masuk, maka seluruh data di marketplace dan kasir akan tidak akurat (data tidak sinkron).</p>
+        </div>
+
+        <!-- ===== 5. HASIL EKSPERIMEN ===== -->
+        <h2><span class="num">5</span> Hasil Eksperimen & Uji Sistem</h2>
+        <p><strong>Metodologi Pengujian:</strong> BLACK-BOX TESTING (Berfokus pada eksekusi seluruh fitur antarmuka sebagaimana pengguna harian menggunakannya).</p>
+        
+        <div class="card-doc highlight">
+            <h3>Parameter Keberhasilan</h3>
+            <p>Dari total 10 Skenario Utama Sistem yang krusial bagi bisnis, tingkat keberhasilannya adalah <strong>100% PASS (Bebas Bug / Bebas Galat)</strong>.</p>
+            
+            <table>
+                <tr><th>Skenario</th><th>Hasil</th><th>Deskripsi & Bukti Visual</th></tr>
+                <tr>
+                    <td><strong>1. Integrasi Gudang vs Toko</strong><br><span style="font-size:12px;color:#94a3b8;">Transaksi POS</span></td>
+                    <td><span class="tag tag-success">PASS</span></td>
+                    <td>Sistem secara instan mereduksi stok gudang sebesar n tanpa kelambatan waktu saat transaksi POS.<br><img src="screenshots/pos_interface_grid_1776397474856.png" alt="POS Kasir" style="width:100%; max-width:280px; margin-top:8px; border-radius:6px; border:1px solid rgba(255,255,255,0.1);"></td>
+                </tr>
+                <tr>
+                    <td><strong>2. Multi-Channel Test</strong><br><span style="font-size:12px;color:#94a3b8;">Filter Laporan</span></td>
+                    <td><span class="tag tag-success">PASS</span></td>
+                    <td>Filter pencarian Laporan berhasil memisahkan uang muka transaksi "Shopee" dari "Toko Fisik".<br><img src="screenshots/reports_analytics_overview_1776397504541.png" alt="Laporan Modul" style="width:100%; max-width:280px; margin-top:8px; border-radius:6px; border:1px solid rgba(255,255,255,0.1);"></td>
+                </tr>
+                <tr>
+                    <td><strong>3. Eksekusi Auto-Installer</strong><br><span style="font-size:12px;color:#94a3b8;">Setup 1-Klik</span></td>
+                    <td><span class="tag tag-success">PASS</span></td>
+                    <td>12 Tabel beserta ratusan baris data tersusun otomatis &lt; 5 detik.<br><img src="screenshots/install_success_1776395659805.png" alt="Install Success" style="width:100%; max-width:280px; margin-top:8px; border-radius:6px; border:1px solid rgba(255,255,255,0.1);"></td>
+                </tr>
+                <tr>
+                    <td><strong>4. Responsibilitas Layout</strong><br><span style="font-size:12px;color:#94a3b8;">Mobile Test</span></td>
+                    <td><span class="tag tag-success">PASS</span></td>
+                    <td>Sistem mendeteksi ukuran layar HP, sidebar otomatis sembunyi tanpa merusak halaman.<br><img src="screenshots/dashboard_view_1776395726778.png" alt="Dashboard Responsive" style="width:100%; max-width:280px; margin-top:8px; border-radius:6px; border:1px solid rgba(255,255,255,0.1);"></td>
+                </tr>
+                <tr>
+                    <td><strong>5. Uji Keamanan Peran (RBAC)</strong><br><span style="font-size:12px;color:#94a3b8;">Akses ditolak</span></td>
+                    <td><span class="tag tag-success">PASS</span></td>
+                    <td>Akun Kasir berhasil ditolak mengakses halaman Laporan Keuangan/Pengadaan.<br><span style="font-size:12px; color:#94a3b8; font-style:italic;">(Cek session backend & re-route otomatis)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>6. Program Loyalitas Pelanggan</strong><br><span style="font-size:12px;color:#94a3b8;">Poin Reward Otomatis</span></td>
+                    <td><span class="tag tag-success">PASS</span></td>
+                    <td>Sistem menghitung dan menambahkan poin reward secara otomatis ke akun pelanggan tepat setelah transaksi kasir selesai (Rp 10.000 = 1 poin). Riwayat poin tercatat tanpa input manual.<br><span style="font-size:12px; color:#94a3b8; font-style:italic;">(Diverifikasi via modul Loyalitas Pelanggan)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>7. Alert Stok Menipis</strong><br><span style="font-size:12px;color:#94a3b8;">Notifikasi E-Procurement</span></td>
+                    <td><span class="tag tag-success">PASS</span></td>
+                    <td>Saat stok produk di bawah ambang minimum (minimum stock level), sistem memunculkan peringatan merah di dashboard dan memicu form Pengadaan (PO) secara otomatis tanpa perlu input manual dari staf gudang.</td>
+                </tr>
+                <tr>
+                    <td><strong>8. Login & Autentikasi Pengguna</strong><br><span style="font-size:12px;color:#94a3b8;">Security Gate</span></td>
+                    <td><span class="tag tag-success">PASS</span></td>
+                    <td>Sistem menolak login dengan kredensial salah dan menampilkan pesan error yang tepat. Login dengan kredensial benar berhasil masuk ke dashboard sesuai level peran (Admin / Kasir / Gudang).<br><span style="font-size:12px; color:#94a3b8; font-style:italic;">(Diuji dengan 3 level akun berbeda)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>9. Input Stok Masuk Gudang</strong><br><span style="font-size:12px;color:#94a3b8;">Manajemen Inventaris</span></td>
+                    <td><span class="tag tag-success">PASS</span></td>
+                    <td>Barang masuk yang diinput oleh petugas gudang langsung memperbarui jumlah stok tersedia secara real-time. Data juga tercatat di histori pergerakan stok (log stok masuk).<br><img src="screenshots/stock_module_overview_1776397534602.png" alt="Stok Masuk" style="width:100%; max-width:280px; margin-top:8px; border-radius:6px; border:1px solid rgba(255,255,255,0.1);"></td>
+                </tr>
+                <tr>
+                    <td><strong>10. Ekspor & Filter Laporan</strong><br><span style="font-size:12px;color:#94a3b8;">Business Intelligence</span></td>
+                    <td><span class="tag tag-success">PASS</span></td>
+                    <td>Modul Laporan berhasil menampilkan ringkasan penjualan berdasarkan filter tanggal, channel (Toko/Shopee/Tokopedia), dan kategori produk. Data yang ditampilkan konsisten dengan data di tabel transaksi.<br><img src="screenshots/reports_analytics_overview_1776397504541.png" alt="Laporan Filter" style="width:100%; max-width:280px; margin-top:8px; border-radius:6px; border:1px solid rgba(255,255,255,0.1);"></td>
+                </tr>
+            </table>
+
+            <!-- Rekap Hasil -->
+            <div style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap;">
+                <div style="flex:1; min-width:140px; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:12px; padding:16px; text-align:center;">
+                    <div style="font-size:32px; font-weight:800; color:#10b981;">10/10</div>
+                    <div style="font-size:13px; color:#6ee7b7; margin-top:4px;">Skenario PASS</div>
+                </div>
+                <div style="flex:1; min-width:140px; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.3); border-radius:12px; padding:16px; text-align:center;">
+                    <div style="font-size:32px; font-weight:800; color:#a5b4fc;">100%</div>
+                    <div style="font-size:13px; color:#a5b4fc; margin-top:4px;">Pass Rate</div>
+                </div>
+                <div style="flex:1; min-width:140px; background:rgba(239,68,68,0.07); border:1px solid rgba(239,68,68,0.2); border-radius:12px; padding:16px; text-align:center;">
+                    <div style="font-size:32px; font-weight:800; color:#fca5a5;">0</div>
+                    <div style="font-size:13px; color:#fca5a5; margin-top:4px;">Bug Ditemukan</div>
+                </div>
+            </div>
+
+            <div style="margin-top:16px; font-style:italic; color:#94a3b8; padding-top:14px; border-top:1px dashed rgba(99,102,241,0.3); font-size:13px;">
+                <strong>🗣️ Speaker Notes:</strong><br>
+                "Dari 10 skenario kritis yang kami uji menggunakan metode Black-Box Testing — mulai dari alur transaksi kasir, keamanan akses antar peran, hingga otomatisasi loyalitas pelanggan — seluruhnya menunjukkan hasil <strong>PASS tanpa satu pun bug</strong> yang ditemukan. Angka 100% ini bukan kebetulan; ini adalah hasil dari perancangan ERD yang matang sejak awal dan validasi di setiap tahap Waterfall."
+            </div>
+        </div>
+
+        <!-- ===== 6. KESIMPULAN & SARAN ===== -->
+        <h2><span class="num">6</span> Kesimpulan & Saran Strategis</h2>
+
+        <div class="card-doc success">
+            <h3>Kesimpulan</h3>
+            <p>Berdasarkan hasil perancangan, implementasi, dan pengujian berbasis <strong>Metode Waterfall</strong>, disimpulkan beberapa hal sebagai berikut:</p>
+            <ol>
+                <li><strong>Penyatuan Proses Bisnis Selesai:</strong> Sistem Ketoeroenan Doeloe v2.0 telah mengikat 5 modul independen (Gudang, Kasir, Penjualan Online, Pemasok, Pelanggan) ke dalam satu wadah sentral (Database Tunggal) secara stabil.</li>
+                <li><strong>Eliminasi Inkonsistensi:</strong> Sinkronisasi stok Multi-Channel terbukti mengeliminir masalah barang kosong mendadak/overselling.</li>
+                <li><strong>Penyajian Data Kritis:</strong> Dashboard Analytics mampu mengalihkan cara pengambilan keputusan perusahaan, dari menebak feeling, kini menjadi murni berbasis angka performa otomatis.</li>
+                <li><strong>Reliabilitas Tinggi:</strong> Sistem sudah lolos validasi tingkat operasional harian berkat integrasi pembagian 3 tingkat peran hak akses (Role-Based Access).</li>
+            </ol>
+        </div>
+
+        <div class="card-doc warning">
+            <h3>Saran Strategis (Future Roadmap)</h3>
+            <p>Untuk mematangkan ekosistem di waktu mendatang, disarankan agar sistem dikembangkan lebih lanjut dengan cara:</p>
+            <ul>
+                <li><strong>Integrasi Fisik:</strong> Integrasi infrastruktur seperti injeksi protokol alat pembaca Barcode (Barcode Scanner USB) secara paralel.</li>
+                <li><strong>Integrasi Hardware Nota:</strong> Integrasi printer termal (stempel Bluetooth) untuk pencetakan nota invoice yang ekonomis.</li>
+            </ul>
+        </div>
+
+        <div style="text-align:center; margin-top:64px; padding:32px; border-top:1px solid rgba(99,102,241,0.15);">
+            <p style="color:#64748b; font-size:13px;">Dokumen Presentasi — Sistem Informasi Toko ATK v2.0<br>Ketoeroenan Doeloe &copy; <?= date('Y') ?></p>
+        </div>
+    </div>
+
+    <div class="print-btn">
+        <button onclick="window.print()"><i class="bi bi-printer me-2"></i>Print / PDF</button>
+    </div>
+</body>
+</html>

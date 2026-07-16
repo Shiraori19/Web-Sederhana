@@ -1,0 +1,76 @@
+<?php
+/**
+ * Database Configuration
+ * Sistem Informasi Toko ATK v2
+ */
+
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'sistem_atk2');
+
+// Create connection
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Koneksi database gagal: " . $conn->connect_error);
+}
+
+// Set charset
+$conn->set_charset("utf8mb4");
+
+// Set timezone
+date_default_timezone_set('Asia/Jakarta');
+
+// Base URL
+define('BASE_URL', '/Sistem_ATK2');
+
+// App Config
+define('APP_NAME', 'Ketoeroenan Doeloe');
+define('APP_VERSION', '2.0');
+
+/**
+ * Helper: Format Rupiah
+ */
+function formatRupiah($angka) {
+    return 'Rp ' . number_format($angka, 0, ',', '.');
+}
+
+/**
+ * Helper: Generate Invoice Number
+ */
+function generateInvoice() {
+    return 'INV-' . date('Ymd') . '-' . strtoupper(substr(uniqid(), -5));
+}
+
+/**
+ * Helper: Generate PO Number
+ */
+function generatePO() {
+    return 'PO-' . date('Ymd') . '-' . strtoupper(substr(uniqid(), -5));
+}
+
+/**
+ * Helper: Sanitize Input
+ */
+function sanitize($conn, $data) {
+    return htmlspecialchars(mysqli_real_escape_string($conn, trim($data)));
+}
+
+/**
+ * Helper: Flash message
+ */
+function setFlash($type, $message) {
+    $_SESSION['flash'] = ['type' => $type, 'message' => $message];
+}
+
+function getFlash() {
+    if (isset($_SESSION['flash'])) {
+        $flash = $_SESSION['flash'];
+        unset($_SESSION['flash']);
+        return $flash;
+    }
+    return null;
+}
+?>

@@ -1,0 +1,106 @@
+/**
+ * ATK Store Pro v2 — Landing Page JavaScript
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize AOS
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 50
+    });
+
+    // ===== NAVBAR SCROLL EFFECT =====
+    const navbar = document.getElementById('mainNav');
+    const scrollIndicator = document.getElementById('scrollIndicator');
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+            if (scrollIndicator) scrollIndicator.style.opacity = '0';
+        } else {
+            navbar.classList.remove('scrolled');
+            if (scrollIndicator) scrollIndicator.style.opacity = '1';
+        }
+    });
+
+    // ===== ANIMATED COUNTERS =====
+    const counters = document.querySelectorAll('.stat-number[data-count]');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.dataset.count);
+                animateCounter(el, target);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    function animateCounter(el, target) {
+        const duration = 2000;
+        const start = 0;
+        const startTime = performance.now();
+
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out quad
+            const easeProgress = 1 - (1 - progress) * (1 - progress);
+            const current = Math.round(start + (target - start) * easeProgress);
+            el.textContent = current.toLocaleString('id-ID');
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            }
+        }
+        requestAnimationFrame(update);
+    }
+
+    // ===== SMOOTH SCROLL =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Close mobile nav
+                const navCollapse = document.getElementById('navbarNav');
+                if (navCollapse.classList.contains('show')) {
+                    bootstrap.Collapse.getInstance(navCollapse)?.hide();
+                }
+            }
+        });
+    });
+
+    // ===== ACTIVE NAV LINK ON SCROLL =====
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY + 100;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+            if (navLink) {
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    navLink.classList.add('active');
+                }
+            }
+        });
+    });
+
+    // ===== PARALLAX EFFECT ON HERO SHAPES =====
+    window.addEventListener('mousemove', (e) => {
+        const shapes = document.querySelectorAll('.hero-shape');
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        shapes.forEach((shape, i) => {
+            const speed = (i + 1) * 8;
+            shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+        });
+    });
+});

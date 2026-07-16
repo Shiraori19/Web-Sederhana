@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart Proses Bisnis — Ketoeroenan Doeloe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root { --primary:#6366f1; --dark:#0f172a; --dark-2:#1e293b; --border:rgba(99,102,241,0.15); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:var(--dark); color:#e2e8f0; }
+        .container-fc { max-width:1200px; margin:0 auto; padding:40px 24px; }
+        h1 { font-family:'Poppins',sans-serif; font-size:32px; font-weight:800; text-align:center; color:#f1f5f9; margin-bottom:8px; }
+        .subtitle { text-align:center; color:#94a3b8; margin-bottom:40px; }
+        .flowchart-card {
+            background:rgba(30,41,59,0.7); border:1px solid var(--border); border-radius:20px;
+            padding:32px; margin-bottom:32px; overflow-x:auto;
+        }
+        .flowchart-card h2 {
+            font-family:'Poppins',sans-serif; font-size:20px; font-weight:700; color:#f1f5f9;
+            margin-bottom:20px; display:flex; align-items:center; gap:10px;
+        }
+        .flowchart-card h2 .badge {
+            background:linear-gradient(135deg,var(--primary),#8b5cf6); color:#fff;
+            padding:4px 12px; border-radius:8px; font-size:12px; font-weight:600;
+        }
+        .mermaid { text-align:center; }
+        .mermaid svg { max-width:100%; height:auto; }
+        .back-link { display:inline-flex; align-items:center; gap:6px; color:#94a3b8; text-decoration:none; margin-bottom:24px; font-size:14px; }
+        .back-link:hover { color:var(--primary); }
+        @media print { body { background:#fff; } .flowchart-card { border-color:#ddd; } }
+    </style>
+</head>
+<body>
+    <div class="container-fc">
+        <a href="presentasi.html" class="back-link"><i class="bi bi-arrow-left"></i> Kembali ke Presentasi</a>
+        <h1><i class="bi bi-diagram-3 me-2"></i>Flowchart Proses Bisnis</h1>
+        <p class="subtitle">Alur proses bisnis terintegrasi — Sistem Ketoeroenan Doeloe v2.0</p>
+
+        <!-- Flowchart 1: Manajemen Stok -->
+        <div class="flowchart-card">
+            <h2><span class="badge">01</span> Manajemen Stok & Inventaris</h2>
+            <div class="mermaid">
+flowchart TD
+    A["📦 Petugas Gudang"] --> B["Update Data Barang Masuk"]
+    B --> C["Sinkronisasi ke Sistem"]
+    C --> D{"Transaksi di Kasir Gudang?"}
+    D -->|Ya| E{"Pembayaran Digital?"}
+    D -->|Tidak| F["Selesai - Stok Terupdate"]
+    E -->|Ya - QRIS/E-Wallet| G["Update Program Loyalitas"]
+    E -->|Tidak - Cash| H["Pencatatan Standar"]
+    G --> I["Data ke Dashboard Terpadu"]
+    H --> I
+    
+    style A fill:#6366f1,stroke:#4f46e5,color:#fff
+    style D fill:#f59e0b,stroke:#d97706,color:#fff
+    style E fill:#f59e0b,stroke:#d97706,color:#fff
+    style G fill:#10b981,stroke:#059669,color:#fff
+    style I fill:#06b6d4,stroke:#0891b2,color:#fff
+            </div>
+        </div>
+
+        <!-- Flowchart 2: Penjualan Toko -->
+        <div class="flowchart-card">
+            <h2><span class="badge">02</span> Penjualan Toko Fisik (Offline)</h2>
+            <div class="mermaid">
+flowchart LR
+    A["🛒 Pelanggan Beli di Kasir"] --> B["Proses Pembayaran"]
+    B --> C{"Metode Bayar?"}
+    C -->|"QRIS / E-Wallet"| D["Auto-catat ke Dashboard"]
+    C -->|"Cash"| E["Catat Manual"]
+    D --> F["Update Profil Loyalitas"]
+    E --> G["Catat ke Riwayat"]
+    F --> H["Kurangi Stok Real-time"]
+    G --> H
+    H --> I["✅ Transaksi Selesai"]
+    
+    style A fill:#6366f1,stroke:#4f46e5,color:#fff
+    style C fill:#f59e0b,stroke:#d97706,color:#fff
+    style F fill:#10b981,stroke:#059669,color:#fff
+    style I fill:#10b981,stroke:#059669,color:#fff
+            </div>
+        </div>
+
+        <!-- Flowchart 3: Marketplace -->
+        <div class="flowchart-card">
+            <h2><span class="badge">03</span> Penjualan Marketplace (Online)</h2>
+            <div class="mermaid">
+flowchart TD
+    A["🟠 Shopee"] --> D["Sistem Pusat"]
+    B["🟢 Tokopedia"] --> D
+    C["🌐 Website"] --> D
+    D --> E{"Stok Tersedia?"}
+    E -->|Ya| F["Proses Pesanan"]
+    E -->|Tidak| G["❌ Tolak / Backorder"]
+    F --> H["Sinkronisasi Stok Semua Channel"]
+    H --> I["📋 Siapkan Dokumen Pengiriman"]
+    I --> J["Instruksi Packing ke Gudang"]
+    J --> K["✅ Kirim ke Pelanggan"]
+    
+    style A fill:#f97316,stroke:#ea580c,color:#fff
+    style B fill:#22c55e,stroke:#16a34a,color:#fff
+    style C fill:#06b6d4,stroke:#0891b2,color:#fff
+    style D fill:#6366f1,stroke:#4f46e5,color:#fff
+    style E fill:#f59e0b,stroke:#d97706,color:#fff
+    style K fill:#10b981,stroke:#059669,color:#fff
+            </div>
+        </div>
+
+        <!-- Flowchart 4: Dashboard -->
+        <div class="flowchart-card">
+            <h2><span class="badge">04</span> Dashboard Terpadu & Analisis</h2>
+            <div class="mermaid">
+flowchart TD
+    A["Data Transaksi Fisik"] --> C["📊 Dashboard Terpadu"]
+    B["Data Transaksi Marketplace"] --> C
+    C --> D["Proses Pesanan & Pengiriman"]
+    C --> E["Analisis Tren Penjualan"]
+    E --> F["Produk Terlaris"]
+    E --> G["Pola Pembelian Pelanggan"]
+    E --> H["Revenue per Channel"]
+    F --> I["Insight untuk Manajemen"]
+    G --> I
+    H --> I
+    
+    style A fill:#6366f1,stroke:#4f46e5,color:#fff
+    style B fill:#8b5cf6,stroke:#7c3aed,color:#fff
+    style C fill:#06b6d4,stroke:#0891b2,color:#fff
+    style I fill:#10b981,stroke:#059669,color:#fff
+            </div>
+        </div>
+
+        <!-- Flowchart 5: E-Procurement -->
+        <div class="flowchart-card">
+            <h2><span class="badge">05</span> Manajemen Pengadaan (E-Procurement)</h2>
+            <div class="mermaid">
+flowchart TD
+    A["📦 Sistem Pantau Level Stok"] --> B{"Stok ≤ Minimum?"}
+    B -->|Tidak| A
+    B -->|Ya| C["⚠️ Alert Stok Rendah"]
+    C --> D{"Mode PO Otomatis?"}
+    D -->|Ya| E["Sistem Buat PO Otomatis"]
+    D -->|Tidak| F["Manajemen Review Tren"]
+    F --> G["Buat PO Manual"]
+    E --> H["Kirim E-Procurement ke Supplier"]
+    G --> H
+    H --> I["Supplier Proses PO"]
+    I --> J["Barang Diterima di Gudang"]
+    J --> K["✅ Update Stok Otomatis"]
+    
+    style A fill:#6366f1,stroke:#4f46e5,color:#fff
+    style B fill:#f59e0b,stroke:#d97706,color:#fff
+    style C fill:#ef4444,stroke:#dc2626,color:#fff
+    style D fill:#f59e0b,stroke:#d97706,color:#fff
+    style K fill:#10b981,stroke:#059669,color:#fff
+            </div>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#6366f1',
+                primaryTextColor: '#f1f5f9',
+                primaryBorderColor: '#4f46e5',
+                lineColor: '#64748b',
+                secondaryColor: '#1e293b',
+                tertiaryColor: '#334155',
+                fontSize: '14px',
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

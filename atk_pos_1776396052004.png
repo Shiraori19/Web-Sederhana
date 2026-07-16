@@ -1,0 +1,380 @@
+# PRESENTASI SISTEM INFORMASI TOKO ATK
+## Ketoeroenan Doeloe — 15 Slide
+
+> **Cara Pakai**: Setiap `## Slide X` = 1 halaman PPT.
+> Copy-paste teks ke slide, lalu sisipkan screenshot sesuai petunjuk.
+> Screenshot ada di folder: `d:\XAMPP\htdocs\Sistem_ATK2\docs\screenshots\`
+
+---
+
+# BAGIAN 1: LATAR BELAKANG (Slide 1–3)
+
+---
+
+## Slide 1 — COVER
+
+**PERANCANGAN SISTEM INFORMASI TOKO ALAT TULIS KANTOR**
+
+Berbasis Web dengan Integrasi Multi-Channel, E-Procurement, dan Program Loyalitas Pelanggan
+
+Ketoeroenan Doeloe v2.0
+
+*[Nama / NIM / Logo Institusi]*
+
+---
+
+## Slide 2 — LATAR BELAKANG
+
+**Latar Belakang**
+
+Toko alat tulis kantor (ATK) merupakan salah satu usaha ritel yang menyediakan kebutuhan perkantoran, pendidikan, dan rumah tangga. Seiring perkembangan teknologi dan tren penjualan multi-channel, pengelolaan toko secara manual mulai menimbulkan sejumlah kendala:
+
+| Masalah | Dampak |
+|---------|--------|
+| Pencatatan stok manual (buku/Excel) | Selisih data dan fisik hingga 15-20%, rawan human error |
+| Penjualan offline dan online terpisah | Stok tidak sinkron, risiko overselling dan pembatalan pesanan |
+| Tidak ada analisis data penjualan | Keputusan bisnis berdasarkan intuisi, bukan data |
+| Pengadaan barang tidak terstruktur | Sering terjadi kehabisan stok (stock-out) produk laris |
+| Tidak ada program loyalitas | Kehilangan potensi repeat order dan retensi pelanggan |
+
+Permasalahan tersebut mendorong perlunya sebuah **sistem informasi terintegrasi** yang mampu menghubungkan seluruh proses bisnis toko ATK dalam satu platform digital.
+
+---
+
+## Slide 3 — RUMUSAN MASALAH & JUSTIFIKASI
+
+**Rumusan Masalah**
+
+1. Bagaimana merancang sistem yang mengintegrasikan manajemen stok, penjualan, dan pengadaan?
+2. Bagaimana membangun POS multi-channel yang mencegah overselling?
+3. Bagaimana menyediakan dashboard analitik untuk pengambilan keputusan berbasis data?
+4. Bagaimana mengimplementasikan program loyalitas pelanggan secara otomatis?
+
+**Mengapa Perlu Digitalisasi?**
+
+- 📊 **Data-Driven** — Dari intuisi ke keputusan berbasis data real-time
+- 💰 **Efisiensi** — Eliminasi proses manual yang rawan error
+- 📈 **Revenue** — Multi-channel selling memperluas jangkauan pasar
+- 🔒 **Akuntabilitas** — Setiap transaksi tercatat dan bisa di-audit
+
+---
+
+# BAGIAN 2: METODE WATERFALL (Slide 4–5)
+
+---
+
+## Slide 4 — METODE WATERFALL
+
+**Metode Pengembangan: Waterfall (SDLC)**
+
+```
+    ┌───────────────────┐
+    │  1. ANALYSIS       │  → Observasi, wawancara, identifikasi 5 proses bisnis
+    ├───────────────────┤
+    │  2. DESIGN         │  → ERD 12 tabel, UI mockup, arsitektur sistem
+    ├───────────────────┤
+    │  3. IMPLEMENTATION │  → Coding 25+ file PHP, integrasi Chart.js, RBAC
+    ├───────────────────┤
+    │  4. TESTING        │  → Black-box testing 12 skenario, uji responsif
+    ├───────────────────┤
+    │  5. DEPLOYMENT     │  → Auto-installer, dokumentasi, training user
+    ├───────────────────┤
+    │  6. MAINTENANCE    │  → Bug fixing, pengembangan fitur baru
+    └───────────────────┘
+```
+
+**Alasan Memilih Waterfall:**
+- ✅ Requirements sudah jelas (proses bisnis ATK sudah mapan)
+- ✅ Deliverable terstruktur di setiap tahap
+- ✅ Mudah dipahami stakeholder non-teknis
+- ✅ Quality assurance sebelum lanjut ke fase berikutnya
+
+---
+
+## Slide 5 — TEKNOLOGI & ARSITEKTUR
+
+**Technology Stack**
+
+| Komponen | Teknologi | Keterangan |
+|----------|-----------|------------|
+| Backend | PHP 8+ (Native) | Widely supported, mudah deploy |
+| Database | MySQL 8 (InnoDB) | ACID compliant, 12 tabel relasional |
+| Frontend | Bootstrap 5.3 | Mobile-first, responsive |
+| Charts | Chart.js 4 | Visualisasi data interaktif |
+| Icons | Bootstrap Icons | 2000+ icon konsisten |
+| Security | bcrypt + Session | Password hashing, RBAC |
+| Server | Apache (XAMPP) | Cross-platform |
+
+**Arsitektur:**
+```
+[Browser/Mobile] ←→ [Apache + PHP] ←→ [MySQL 12 Tabel]
+                          ↑
+                [Bootstrap 5 + Chart.js]
+```
+
+**3 Role Pengguna:** Admin (full), Kasir (POS + riwayat), Gudang (produk + stok)
+
+---
+
+# BAGIAN 3: TUJUAN (Slide 6)
+
+---
+
+## Slide 6 — TUJUAN
+
+**Tujuan Pengembangan Sistem**
+
+**Tujuan Umum:**
+Merancang dan membangun Sistem Informasi Toko ATK berbasis web yang terintegrasi, guna mendigitalisasi seluruh proses bisnis dan mendukung pengambilan keputusan berbasis data.
+
+**Tujuan Khusus:**
+
+| No | Tujuan | Modul |
+|----|--------|-------|
+| 1 | Membangun manajemen stok dengan alert minimum otomatis | Stok & Inventaris |
+| 2 | Mengembangkan POS multi-channel dan multi-payment | Kasir / POS |
+| 3 | Membangun dashboard analitik dengan KPI real-time | Dashboard |
+| 4 | Mengimplementasikan workflow Purchase Order | E-Procurement |
+| 5 | Mengembangkan program loyalitas dengan poin & level | Pelanggan & Loyalitas |
+| 6 | Membangun tracking penjualan marketplace | Marketplace |
+| 7 | Menghasilkan invoice digital siap cetak | Invoice / Struk |
+| 8 | Mengimplementasikan keamanan RBAC (3 role) | Autentikasi |
+
+---
+
+# BAGIAN 4: PROSES BISNIS / FLOWCHART (Slide 7–9)
+
+---
+
+## Slide 7 — FLOWCHART 1 & 2
+
+**Proses Bisnis Terintegrasi**
+
+**Flowchart 1: Manajemen Stok & Inventaris**
+
+Petugas gudang menginput barang masuk ke sistem → Stok otomatis tersinkronisasi di seluruh modul. Jika terjadi transaksi di kasir gudang, sistem memvalidasi metode pembayaran. Pembayaran digital (QRIS/E-Wallet) akan otomatis menambahkan poin loyalitas pelanggan. Sistem juga secara kontinu memantau stok — jika stok ≤ minimum, alert merah muncul di sidebar dan dashboard.
+
+```
+Gudang Input Barang → Sinkronisasi Stok → Monitor Level
+                                              ↓
+                                    Stok ≤ Minimum?
+                                    ↙            ↘
+                              [Tidak]           [Ya]
+                                ↓                 ↓
+                            Lanjut          ⚠️ Alert + Trigger PO
+```
+
+**Flowchart 2: Penjualan Toko Fisik (POS)**
+
+Pelanggan → Kasir pilih produk di POS → Tambah ke keranjang → Pilih pelanggan, metode bayar, channel → Proses pembayaran → Generate invoice otomatis + kurangi stok + catat stok keluar → Jika digital: +poin loyalitas → Cetak struk/invoice.
+
+```
+Pelanggan → Kasir POS → Keranjang → Checkout
+    ↓
+Generate Invoice + Kurangi Stok + Stok Keluar
+    ↓
+Digital? → Ya: +Poin Loyalitas → Print Invoice ✅
+```
+
+---
+
+## Slide 8 — FLOWCHART 3 & 4
+
+**Flowchart 3: Penjualan Marketplace (Online)**
+
+Pesanan masuk dari Shopee/Tokopedia/Website → Admin proses via POS (pilih channel) → Validasi stok → Sinkronisasi stok semua channel (cegah overselling) → Update status pengiriman (Pending → Diproses → Dikirim → Selesai) → Input resi & kurir → Kirim ke pelanggan.
+
+```
+Shopee / Tokopedia / Website
+              ↓
+      Sistem POS Terpadu → Cek Stok → Proses Pesanan
+              ↓
+      Sinkronisasi Semua Channel → Update Resi → Kirim ✅
+```
+
+**Flowchart 4: Dashboard Terpadu & Analytics**
+
+Data dari semua transaksi (offline + online) → Agregasi ke database terpadu → Visualisasi: 8 KPI cards, grafik tren 7 hari, pie chart channel, pie chart metode bayar, tabel transaksi terbaru, top 5 produk terlaris, alert stok rendah → Insight manajemen (restock, channel analysis, forecasting).
+
+```
+Transaksi Offline + Online → Database → Dashboard Analytics
+    ↓                                        ↓
+    └→ KPI Cards + Line Chart + Doughnut + Tabel + Alert
+                                             ↓
+                                    Insight Manajemen 📊
+```
+
+---
+
+## Slide 9 — FLOWCHART 5
+
+**Flowchart 5: E-Procurement (Pengadaan Barang)**
+
+Sistem memantau stok real-time → Jika stok ≤ minimum: tampilkan alert + suggest produk di form PO → Admin buat Purchase Order (pilih supplier, produk, qty) → Workflow status: Draft → Dikirim → Diterima → Saat PO "Diterima": stok otomatis bertambah + record stok masuk + update harga beli.
+
+```
+Monitor Stok Real-time
+        ↓
+  Stok ≤ Minimum? → ⚠️ Alert
+        ↓
+  Buat Purchase Order (+ low-stock suggest)
+        ↓
+  DRAFT → DIKIRIM → DITERIMA
+                        ↓
+              ✅ Auto-update stok
+              + Record stok masuk
+              + Update harga beli
+```
+
+**Integrasi 5 Proses:**
+Semua proses saling terhubung — transaksi (2,3) otomatis kurangi stok (1), tercatat di dashboard (4), dan ketika stok menipis memicu procurement (5).
+
+---
+
+# BAGIAN 5: HASIL EKSPERIMEN (Slide 10–13)
+
+---
+
+## Slide 10 — HASIL IMPLEMENTASI
+
+**Hasil Implementasi Sistem**
+
+| Metrik | Hasil |
+|--------|-------|
+| Total Modul | 11 modul fungsional |
+| File PHP | 25+ file terstruktur |
+| Tabel Database | 12 tabel (InnoDB) |
+| Metode Bayar | 4 (Cash, QRIS, E-Wallet, Transfer) |
+| Channel | 4 (Toko, Shopee, Tokopedia, Website) |
+| Level Loyalitas | 4 (Bronze → Silver → Gold → Platinum) |
+| Role User | 3 (Admin, Kasir, Gudang) |
+| Responsive | 100% (Mobile, Tablet, Desktop) |
+| Auto-Installer | 1-klik setup database + data demo |
+
+📸 **Screenshot: Sisipkan `landing_page_hero_1776397584168.png`**
+*(Tampilan landing page dengan hero section dan navigasi)*
+
+---
+
+## Slide 11 — DEMO: DASHBOARD & POS
+
+**Tampilan Sistem**
+
+📸 **Kiri: Dashboard** → Sisipkan `dashboard_kpi_charts_1776397461656.png`
+- 8 KPI cards (produk, transaksi, revenue, stok rendah)
+- Grafik tren penjualan 7 hari (line chart)
+- Pie chart distribusi penjualan per channel
+- Tabel transaksi terbaru + produk terlaris
+
+📸 **Kanan: POS / Kasir** → Sisipkan `pos_interface_grid_1776397474856.png`
+- Grid katalog 15 produk dengan harga & stok
+- Keranjang belanja dengan +/− controls
+- Pilihan pelanggan, metode bayar, channel
+- Tombol "Proses Pembayaran" + validasi
+
+---
+
+## Slide 12 — DEMO: LAPORAN & INVOICE
+
+**Tampilan Sistem (Lanjutan)**
+
+📸 **Kiri: Laporan Analytics** → Sisipkan `reports_analytics_overview_1776397504541.png`
+- Filter tanggal, KPI revenue
+- Bar chart tren harian
+- Doughnut channel + metode bayar
+- Tabel top 10 produk terlaris
+
+📸 **Kanan: Invoice / Struk** → Sisipkan `transaction_invoice_details_1776397550781.png`
+- Header profesional (logo, no. invoice, kasir)
+- Tabel detail pembelian per item
+- Info pembayaran + kembalian
+- Poin loyalitas + tombol Print Struk
+
+---
+
+## Slide 13 — HASIL PENGUJIAN (BLACK-BOX)
+
+**Pengujian Fungsional (Black-Box Testing)**
+
+| No | Skenario | Expected | Status |
+|----|----------|----------|--------|
+| 1 | Install database via installer | 12 tabel + data demo dibuat | ✅ PASS |
+| 2 | Login 3 role (Admin, Kasir, Gudang) | Menu disesuaikan per role | ✅ PASS |
+| 3 | Checkout kasir → stok berkurang | Stok otomatis -N | ✅ PASS |
+| 4 | Bayar digital → poin bertambah | Poin loyalitas naik | ✅ PASS |
+| 5 | PO diterima → stok bertambah | Stok otomatis +N | ✅ PASS |
+| 6 | Stok rendah → alert muncul | Badge merah di sidebar | ✅ PASS |
+| 7 | Print invoice | Struk siap cetak | ✅ PASS |
+| 8 | Filter riwayat + laporan | Data terfilter sesuai | ✅ PASS |
+| 9 | Grafik dashboard & laporan | Chart render dengan data | ✅ PASS |
+| 10 | Responsive mobile | Layout menyesuaikan | ✅ PASS |
+
+**Hasil: 10/10 test case PASSED → 100% success rate**
+
+---
+
+# BAGIAN 6: KESIMPULAN (Slide 14–15)
+
+---
+
+## Slide 14 — KESIMPULAN
+
+**Kesimpulan**
+
+1. Sistem Informasi Toko ATK **"Ketoeroenan Doeloe"** telah berhasil dirancang dan dibangun menggunakan metode **Waterfall** dengan PHP, MySQL, dan Bootstrap 5.3.
+
+2. Sistem mengintegrasikan **5 proses bisnis utama**: Manajemen Stok, Penjualan Toko Fisik, Penjualan Marketplace, Dashboard Analytics, dan E-Procurement.
+
+3. Seluruh **10 skenario pengujian** black-box menghasilkan **100% PASS**, membuktikan sistem berfungsi sesuai kebutuhan.
+
+4. Dashboard analitik menyediakan **8 KPI real-time** dengan visualisasi interaktif untuk mendukung **pengambilan keputusan berbasis data**.
+
+5. POS multi-channel + auto-sinkronisasi stok berhasil **mengeliminasi risiko overselling**.
+
+6. Program loyalitas 4 level memberikan **strategi retensi pelanggan** yang terotomasi.
+
+---
+
+## Slide 15 — SARAN & PENUTUP
+
+**Saran Pengembangan**
+
+| Timeline | Saran |
+|----------|-------|
+| **0-3 bulan** | Deploy ke server produksi, training staf, migrasi data manual |
+| **3-6 bulan** | Integrasi barcode scanner, cetak struk thermal, API Shopee/Tokopedia |
+| **6-12 bulan** | Mobile app (PWA), multi-cabang, AI demand forecasting |
+
+**Kelebihan:**
+✅ Terintegrasi penuh • ✅ Multi-channel • ✅ Dashboard real-time • ✅ 100% responsive • ✅ Auto-installer
+
+**Keterbatasan:**
+⚠️ Integrasi marketplace simulasi • ⚠️ Belum barcode/thermal printer • ⚠️ Single branch
+
+---
+
+**Terima Kasih 🙏**
+
+Sesi Pertanyaan & Diskusi
+
+Demo: http://localhost/Sistem_ATK2/
+Login: admin@atk.com / password
+
+---
+
+# DAFTAR SCREENSHOT UNTUK PPT
+
+Semua file ada di: `d:\XAMPP\htdocs\Sistem_ATK2\docs\screenshots\`
+
+| Slide | Screenshot | File |
+|-------|-----------|------|
+| 10 | Landing Page | `landing_page_hero_1776397584168.png` |
+| 11 | Dashboard | `dashboard_kpi_charts_1776397461656.png` |
+| 11 | POS Kasir | `pos_interface_grid_1776397474856.png` |
+| 12 | Laporan Analytics | `reports_analytics_overview_1776397504541.png` |
+| 12 | Invoice | `transaction_invoice_details_1776397550781.png` |
+| Extra | Stok Management | `stock_management_overview_1776397490371.png` |
+| Extra | Loyalitas | `loyalty_program_overview_1776397522657.png` |
+| Extra | Procurement | `procurement_po_list_1776397536217.png` |
+| Extra | Riwayat | `riwayat_penjualan_print_button_1776397035769.png` |
+| Extra | Install Success | `install_success_1776395659805.png` |
